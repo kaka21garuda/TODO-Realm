@@ -17,6 +17,8 @@
 		C66BD83B1EAA8EE70026FBA7 /* RealmTodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BD83A1EAA8EE70026FBA7 /* RealmTodoTests.swift */; };
 		C66BD8461EAA8EE70026FBA7 /* RealmTodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BD8451EAA8EE70026FBA7 /* RealmTodoUITests.swift */; };
 		C66BD8541EAAA3F60026FBA7 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BD8531EAAA3F60026FBA7 /* NoteModel.swift */; };
+		C66BD8561EAAA8650026FBA7 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BD8551EAAA8650026FBA7 /* TableViewDataSource.swift */; };
+		C66BD85A1EAAAB2E0026FBA7 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BD8591EAAAB2E0026FBA7 /* NotesTableViewController.swift */; };
 		D4063401C4E21D01B47531B9 /* Pods_RealmTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E986FEA46EB99F214184920 /* Pods_RealmTodo.framework */; };
 		DD7BD63AA09C80FDB5B0359B /* Pods_RealmTodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C02C22C009AF4323743129A5 /* Pods_RealmTodoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		C66BD8451EAA8EE70026FBA7 /* RealmTodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTodoUITests.swift; sourceTree = "<group>"; };
 		C66BD8471EAA8EE70026FBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C66BD8531EAAA3F60026FBA7 /* NoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		C66BD8551EAAA8650026FBA7 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		C66BD8591EAAAB2E0026FBA7 /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		F359428637059C9B4ED09339 /* Pods-RealmTodoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmTodoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmTodoUITests/Pods-RealmTodoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FA291FD7FB6511446EF235C8 /* Pods-RealmTodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmTodoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmTodoTests/Pods-RealmTodoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,12 +147,14 @@
 			children = (
 				C66BD8221EAA8EE70026FBA7 /* AppDelegate.swift */,
 				C66BD8241EAA8EE70026FBA7 /* ViewController.swift */,
+				C66BD8551EAAA8650026FBA7 /* TableViewDataSource.swift */,
 				C66BD8261EAA8EE70026FBA7 /* Main.storyboard */,
 				C66BD82C1EAA8EE70026FBA7 /* Assets.xcassets */,
 				C66BD82E1EAA8EE70026FBA7 /* LaunchScreen.storyboard */,
 				C66BD8311EAA8EE70026FBA7 /* Info.plist */,
 				C66BD8291EAA8EE70026FBA7 /* RealmTodo.xcdatamodeld */,
 				C66BD8531EAAA3F60026FBA7 /* NoteModel.swift */,
+				C66BD8591EAAAB2E0026FBA7 /* NotesTableViewController.swift */,
 			);
 			path = RealmTodo;
 			sourceTree = "<group>";
@@ -456,9 +462,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66BD8251EAA8EE70026FBA7 /* ViewController.swift in Sources */,
+				C66BD8561EAAA8650026FBA7 /* TableViewDataSource.swift in Sources */,
 				C66BD8541EAAA3F60026FBA7 /* NoteModel.swift in Sources */,
 				C66BD82B1EAA8EE70026FBA7 /* RealmTodo.xcdatamodeld in Sources */,
 				C66BD8231EAA8EE70026FBA7 /* AppDelegate.swift in Sources */,
+				C66BD85A1EAAAB2E0026FBA7 /* NotesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

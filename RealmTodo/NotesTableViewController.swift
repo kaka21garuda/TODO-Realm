@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NotesTableViewController.swift
 //  RealmTodo
 //
 //  Created by Buka Cakrawala on 4/21/17.
@@ -9,23 +9,19 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class NotesTableViewController: UITableViewController {
+    
+    var roundButton = UIButton()
     
     let realm = try! Realm()
     
     let alertController = UIAlertController(title: "Add", message: "", preferredStyle: .alert)
-    
-    
-    
 
     @IBAction func addItemAction(_ sender: UIBarButtonItem) {
         
         present(alertController, animated: true, completion: nil)
         
     }
-    
-    
-    @IBOutlet weak var tableView: UITableView!
     
     func setupAlertView() {
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
@@ -65,19 +61,45 @@ class ViewController: UIViewController {
         alertController.addAction(saveAction)
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         setupAlertView()
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        let allNotes = realm.objects(Note)
+        return allNotes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell!
+        let allNotes = realm.objects(Note)
+        
+        
+        
+        cell?.textLabel?.text = allNotes[indexPath.row].title
+        cell?.detailTextLabel?.text = allNotes[indexPath.row].content
+        
+        return cell!
+    }
 
 
 }
-
