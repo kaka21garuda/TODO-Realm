@@ -9,7 +9,17 @@
 import UIKit
 import RealmSwift
 
-class NotesTableViewController: UITableViewController {
+protocol TransferNoteDataDelegate {
+    
+    func sendNoteData() -> Note
+    
+}
+
+class NotesTableViewController: UITableViewController, TransferNoteDataDelegate {
+    
+    var chosenIndexPath: IndexPath!
+    
+    var chosenNote: Note!
     
     var roundButton = UIButton()
     
@@ -21,6 +31,10 @@ class NotesTableViewController: UITableViewController {
         
         present(alertController, animated: true, completion: nil)
         
+    }
+    
+    func sendNoteData() -> Note {
+        return chosenNote
     }
     
     func setupAlertView() {
@@ -61,6 +75,12 @@ class NotesTableViewController: UITableViewController {
         alertController.addAction(saveAction)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tableView.reloadData()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,17 +106,19 @@ class NotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         let allNotes = realm.objects(Note)
+        
         return allNotes.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell!
         let allNotes = realm.objects(Note)
+        let sortedNotes = allNotes.sorted(byKeyPath: "dateString", ascending: false)
         
         
-        
-        cell?.textLabel?.text = allNotes[indexPath.row].title
-        cell?.detailTextLabel?.text = allNotes[indexPath.row].content
+        cell?.textLabel?.text = sortedNotes[indexPath.row].title
+        cell?.detailTextLabel?.text = sortedNotes[indexPath.row].content
         
         return cell!
     }
@@ -111,6 +133,23 @@ class NotesTableViewController: UITableViewController {
                 tableView.reloadData()
             })
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let allNotes = realm.objects(Note)
+        
+        if segue.identifier == "updateNoteSegue" {
+            let updateViewController = segue.destination as! UpdateNotesViewController
+            updateViewController.getNoteDelegate = self
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let allNotes = realm.objects(Note)
+        chosenNote = allNotes[indexPath.row]
+        self.performSegue(withIdentifier: "updateNoteSegue", sender: self)
     }
 
 

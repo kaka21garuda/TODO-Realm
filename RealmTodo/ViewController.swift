@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             let newNote = Note()
             newNote.title = (titleTextField?.text)!
             newNote.content = (contentTextField?.text)!
-            newNote.dateString = Date().description
+            
             
             try! self.realm.write({
                 self.realm.add(newNote)
