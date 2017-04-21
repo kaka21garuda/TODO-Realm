@@ -100,6 +100,18 @@ class NotesTableViewController: UITableViewController {
         
         return cell!
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let allNotes = realm.objects(Note)
+        
+        if editingStyle == .delete {
+            try! realm.write({
+                realm.delete(allNotes[indexPath.row])
+                tableView.reloadData()
+            })
+        }
+    }
 
 
 }
