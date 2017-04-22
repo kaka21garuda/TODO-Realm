@@ -145,13 +145,13 @@
 		C66BD8211EAA8EE70026FBA7 /* RealmTodo */ = {
 			isa = PBXGroup;
 			children = (
+				C66BD8611EAB2AB60026FBA7 /* Model */,
 				C66BD8221EAA8EE70026FBA7 /* AppDelegate.swift */,
 				C66BD8261EAA8EE70026FBA7 /* Main.storyboard */,
 				C66BD82C1EAA8EE70026FBA7 /* Assets.xcassets */,
 				C66BD82E1EAA8EE70026FBA7 /* LaunchScreen.storyboard */,
 				C66BD8311EAA8EE70026FBA7 /* Info.plist */,
 				C66BD8291EAA8EE70026FBA7 /* RealmTodo.xcdatamodeld */,
-				C66BD8531EAAA3F60026FBA7 /* NoteModel.swift */,
 				C66BD8591EAAAB2E0026FBA7 /* NotesTableViewController.swift */,
 				C66BD85F1EAB03280026FBA7 /* SearchTableViewController.swift */,
 				C66BD85B1EAABB6A0026FBA7 /* UpdateNotesViewController.swift */,
@@ -175,6 +175,14 @@
 				C66BD8471EAA8EE70026FBA7 /* Info.plist */,
 			);
 			path = RealmTodoUITests;
+			sourceTree = "<group>";
+		};
+		C66BD8611EAB2AB60026FBA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C66BD8531EAAA3F60026FBA7 /* NoteModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

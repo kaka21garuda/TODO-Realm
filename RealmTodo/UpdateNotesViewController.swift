@@ -20,6 +20,7 @@ class UpdateNotesViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: UIButton) {
         
+        // update object
         try! realm.write {
             getNoteDelegate.sendNoteData().title = titleTextField.text!
             getNoteDelegate.sendNoteData().content = contentTextField.text!

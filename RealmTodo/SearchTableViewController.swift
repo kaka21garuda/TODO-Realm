@@ -11,23 +11,31 @@ import RealmSwift
 
 class SearchTableViewController: UITableViewController {
     
+    // allNotes will be the instance representing all the Note objects saved locally in realm
     let allNotes = (try! Realm()).objects(Note.self)
     
+    // filteredNotes is the array that consists of elements that have been filtered by updateSearchResults,
+    // this array will be displayed in the searchTableView in the future
     var filteredNotes = [Note]()
+    
+    // unfilteredNotes is an array consists of all note objects
     var unfilteredNotes = [Note]()
     
+    // searchController which consists of searchBar and textField, to search notes by title
     var searchController: UISearchController!
 
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // in order to filter the unfilteredNotes, we need to make object type Result<Note> to Note, and append it to the unfiltered array
+        // but first let's sort the array in descending order, in order to get the most recent post comes first
         for note in allNotes.sorted(byKeyPath: "dateString", ascending: false) {
             unfilteredNotes.append(note)
         }
 
+        // make the searchBar
         setupSearchBar()
-        
-        
         
     }
 
@@ -115,6 +123,5 @@ extension SearchTableViewController: UISearchControllerDelegate, UISearchResults
         }
         
         tableView.reloadData()
-        
     }
 }
