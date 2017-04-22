@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+// note model, consists title, content and datestring
 class Note: Object {
 
     dynamic var title = ""

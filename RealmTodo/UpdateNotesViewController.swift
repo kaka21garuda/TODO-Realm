@@ -26,8 +26,6 @@ class UpdateNotesViewController: UIViewController {
             self.navigationController?.popToRootViewController(animated: true)
         }
         
-        
-        
     }
     
     override func viewDidLoad() {

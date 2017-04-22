@@ -17,8 +17,6 @@ protocol TransferNoteDataDelegate {
 
 class NotesTableViewController: UITableViewController, TransferNoteDataDelegate {
     
-    var chosenIndexPath: IndexPath!
-    
     var chosenNote: Note!
     
     var roundButton = UIButton()
@@ -32,6 +30,13 @@ class NotesTableViewController: UITableViewController, TransferNoteDataDelegate 
         present(alertController, animated: true, completion: nil)
         
     }
+    
+    @IBAction func searchAction(_ sender: UIBarButtonItem) {
+        
+        
+        
+    }
+    
     
     func sendNoteData() -> Note {
         return chosenNote
@@ -74,19 +79,35 @@ class NotesTableViewController: UITableViewController, TransferNoteDataDelegate 
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
     }
+    
+    func setupSearch() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = UIColor.red
+        navigationController?.title = "Todos"
+        
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search"
+        searchBar.frame = CGRect(x: 0, y: 0, width: (navigationController?.view.bounds.size.width)!, height: 64)
+        searchBar.barStyle = .default
+        searchBar.isTranslucent = false
+        searchBar.barTintColor = UIColor.red
+        view.addSubview(searchBar)
+        
+    }
 
+    //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         setupAlertView()
+        
         
     }
 
@@ -104,9 +125,10 @@ class NotesTableViewController: UITableViewController, TransferNoteDataDelegate 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // all the notes object
         let allNotes = realm.objects(Note)
         
+        // return the number of notes
         return allNotes.count
     }
     
